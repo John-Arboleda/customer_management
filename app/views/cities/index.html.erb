@@ -1,0 +1,23 @@
+<div style="height: 60vh;">
+<table class="table">
+  <thead>
+    <tr>
+      <th>City ID</th>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cities.each do |city| %>
+      <tr>
+        <td><%= city.city_id %></td>
+        <td><%= city.name %></td>
+        <td>
+          <%= link_to 'Edit', edit_city_path(city) %>
+          <%= link_to 'Delete', city_path(city), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

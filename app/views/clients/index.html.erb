@@ -1,20 +1,24 @@
 <div style="height: 60vh;">
-<table class="table">
-  <thead>
-    <tr>
-      <th>Client ID</th>
-      <th>Name</th>
-      <th>City</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @clients.each do |client| %>
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= client.client_id %></td>
-        <td><%= client.name %></td>
-        <td><%= client.city.name %></td>
+        <th>Client ID</th>
+        <th>Name</th>
+        <th>City</th>
+        <th>Actions</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @clients.each do |client| %>
+        <tr>
+          <td><%= client.client_id %></td>
+          <td><%= client.name %></td>
+          <td><%= client.city.name %></td>
+          <td>
+            <%= link_to 'Edit', edit_client_path(client) %>
+            <%= link_to 'Delete', client_path(client), method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
 </div>
