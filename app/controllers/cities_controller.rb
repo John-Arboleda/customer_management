@@ -1,10 +1,6 @@
 class CitiesController < ApplicationController
   def index
-    @cities = City.all
-  end
-
-  def show
-    @city = City.find(params[:id])
+    @cities = City.all.order('city_id')
   end
 
   def new
@@ -13,10 +9,16 @@ class CitiesController < ApplicationController
 
   def create
     @city = City.new(city_params)
+    @city.city_id = City.last.id + 1
     if @city.save
-      redirect_to @city
+      redirect_to cities_path
     else
-      render 'new'
+      if @city.errors.any?
+        @city.errors.full_messages.each do |msg|
+          flash[:alert] = msg
+        end
+      end
+      redirect_to cities_path
     end
   end
 
@@ -27,8 +29,13 @@ class CitiesController < ApplicationController
   def update
     @city = City.find(params[:id])
     if @city.update(city_params)
-      redirect_to @city
+      redirect_to cities_path
     else
+      if @city.errors.any?
+        @city.errors.full_messages.each do |msg|
+          flash[:alert] = msg
+        end
+      end
       render 'edit'
     end
   end
@@ -41,6 +48,6 @@ class CitiesController < ApplicationController
 
   private
     def city_params
-      params.require(:city).permit(:city_id, :name)
+      params.require(:city).permit(:name)
     end
 end

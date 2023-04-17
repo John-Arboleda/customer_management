@@ -1,4 +1,9 @@
 <div style="height: 60vh;">
+
+<%= render 'form' %>
+
+<%= render 'alerts' %>
+
 <table class="table">
   <thead>
     <tr>
@@ -13,8 +18,8 @@
         <td><%= city.city_id %></td>
         <td><%= city.name %></td>
         <td>
-          <%= link_to 'Edit', edit_city_path(city) %>
-          <%= link_to 'Delete', city_path(city), method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to 'Edit', edit_city_path(city), class: "btn btn-sm btn-outline-primary" %>
+          <%= link_to 'Delete', city_path(city), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-outline-danger"%>
         </td>
       </tr>
     <% end %>
