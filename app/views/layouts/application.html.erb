@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Customer Management</title>
+    <title>Client Admin App</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -12,31 +12,43 @@
 
   <body>
     
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
   <%= link_to 'Client Admin App', root_path, class: 'navbar-brand ms-4' %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="d-flex justify-between" style="width: 75%;">
     <ul class="navbar-nav me-auto mb-2 mb-sm-0">
-      <li><%= link_to 'Manage Clients', clients_path, class: "btn btn-md btn-secondary me-3"%></li>
-      <li><%= link_to 'Manage Cities', cities_path, class: "btn btn-md btn-secondary me-3"%></li>
-      <% if params[:controller] == "clients" %>
+      <% if logged_in? %>
+        <li><%= link_to 'Manage Clients', clients_path, class: "btn btn-md btn-secondary me-3"%></li>
+        <li><%= link_to 'Manage Cities', cities_path, class: "btn btn-md btn-secondary me-3"%></li>
+        <% if params[:controller] == "clients" %>
+          <li class="nav-item">
+            <%= link_to 'Add a new Client', new_client_path, class: "btn btn-md btn-success" %>
+          </li>
+        <% elsif params[:controller] == "cities" %>
+          <li class="nav-item">
+            <%= link_to 'Add a new City', new_city_path, class: "btn btn-md btn-success" %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul> 
+    <ul class="navbar-nav ml-auto">
+      <% if logged_in? %>
         <li class="nav-item">
-          <%= link_to 'Add a new Client', new_client_path, class: "btn btn-md btn-success" %>
+          <%= link_to 'Log out', logout_path, method: :delete, class: "btn btn-md btn-danger" %>
         </li>
-      <% elsif params[:controller] == "cities" %>
+      <% else %>
         <li class="nav-item">
-          <%= link_to 'Add a new City', new_city_path, class: "btn btn-md btn-success" %>
+          <%= link_to 'Sign in', sign_in_path, class: "btn btn-md btn-primary me-3" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Sign up', new_user_path, class: "btn btn-md btn-primary" %>
         </li>
       <% end %>
     </ul>
-      
-    <ul class="navbar-nav navbar-right">
-      <%# <li><%= link_to 'Logout', logout_path, method: :delete, class: "btn btn-md btn-primary ms-3 me-5" %><%#</li> %>
-    </ul>
   </div>
-  </nav>
+</nav>
   <div class="row d-flex justify-center align-items-center" style="height: 100vh;">
 
     <div class="col-sm-4 mx-auto" >

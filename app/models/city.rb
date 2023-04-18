@@ -2,7 +2,7 @@ class City < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validate :name_format
 
-  has_many :clients
+  has_many :clients, dependent: :nullify
 
   private
   def name_format

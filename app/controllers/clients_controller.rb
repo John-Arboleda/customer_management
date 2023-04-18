@@ -1,4 +1,6 @@
 class ClientsController < ApplicationController
+  before_action :require_user
+
   def index
     @clients = Client.all.order('client_id')
   end
@@ -32,7 +34,7 @@ class ClientsController < ApplicationController
       redirect_to clients_path
     else
       if @client.errors.any?
-        @client..errors.full_messages.each do |msg|
+        @client.errors.full_messages.each do |msg|
           flash[:alert] = msg
         end
       end

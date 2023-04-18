@@ -1,4 +1,6 @@
 class CitiesController < ApplicationController
+  before_action :require_user
+
   def index
     @cities = City.all.order('city_id')
   end
