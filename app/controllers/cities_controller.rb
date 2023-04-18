@@ -2,7 +2,7 @@ class CitiesController < ApplicationController
   before_action :require_user
 
   def index
-    @cities = City.all.order('city_id')
+    @cities = City.all.order('id')
   end
 
   def new
@@ -11,7 +11,6 @@ class CitiesController < ApplicationController
 
   def create
     @city = City.new(city_params)
-    @city.city_id = City.last.id + 1
     if @city.save
       redirect_to cities_path
     else

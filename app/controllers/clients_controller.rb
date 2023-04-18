@@ -2,7 +2,7 @@ class ClientsController < ApplicationController
   before_action :require_user
 
   def index
-    @clients = Client.all.order('client_id')
+    @clients = Client.all.order('id')
   end
 
   def new
@@ -11,7 +11,6 @@ class ClientsController < ApplicationController
 
   def create
     @client = Client.new(client_params)
-    @client.client_id = Client.last.id + 1
     if @client.save
       redirect_to clients_path
     else

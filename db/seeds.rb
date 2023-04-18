@@ -5,10 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Client.create(client_id: 1, name: 'Pedro Pérez', city_id: 1)
-Client.create(client_id: 2, name: 'Ana Álvarez', city_id: 2)
+City.create(name: 'Bogotá')
+City.create(name: 'Medellín')
 
-City.create(city_id: 1, name: 'Bogotá')
-City.create(city_id: 2, name: 'Medellín')
+Client.create(name: 'Pedro Pérez', city_id: 1)
+Client.create(name: 'Ana Álvarez', city_id: 2)
 
 User.create(name: 'admin', pass: 'password', email: 'admin@example.com')
