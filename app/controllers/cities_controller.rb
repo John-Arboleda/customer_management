@@ -18,7 +18,7 @@ class CitiesController < ApplicationController
           flash[:alert] = msg
         end
       end
-      redirect_to cities_path
+      render 'new'
     end
   end
 
