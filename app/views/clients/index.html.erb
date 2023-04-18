@@ -1,4 +1,5 @@
 <div style="height: 60vh;">
+
   <table class="table">
     <thead>
       <tr>
@@ -13,12 +14,13 @@
         <tr>
           <td><%= client.client_id %></td>
           <td><%= client.name %></td>
-          <td><%= client.city.name %></td>
+          <td><%= City.find(client.city_id).name %></td>
           <td>
-            <%= link_to 'Edit', edit_client_path(client) %>
-            <%= link_to 'Delete', client_path(client), method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to 'Edit', edit_client_path(client), class: "btn btn-sm btn-outline-primary" %>
+            <%= link_to 'Delete', client_path(client), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-outline-danger" %>
           </td>
         </tr>
       <% end %>
-    </table>
+    </tbody>
+  </table>
 </div>

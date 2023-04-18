@@ -1,10 +1,6 @@
 class ClientsController < ApplicationController
   def index
-    @clients = Client.all
-  end
-
-  def show
-    @client = Client.find(params[:id])
+    @clients = Client.all.order('client_id')
   end
 
   def new
@@ -13,9 +9,15 @@ class ClientsController < ApplicationController
 
   def create
     @client = Client.new(client_params)
+    @client.client_id = Client.last.id + 1
     if @client.save
-      redirect_to @client
+      redirect_to clients_path
     else
+      if @client.errors.any?
+        @client.errors.full_messages.each do |msg|
+          flash[:alert] = msg
+        end
+      end
       render 'new'
     end
   end
@@ -27,8 +29,13 @@ class ClientsController < ApplicationController
   def update
     @client = Client.find(params[:id])
     if @client.update(client_params)
-      redirect_to @client
+      redirect_to clients_path
     else
+      if @client.errors.any?
+        @client..errors.full_messages.each do |msg|
+          flash[:alert] = msg
+        end
+      end
       render 'edit'
     end
   end
@@ -40,7 +47,7 @@ class ClientsController < ApplicationController
   end
 
   private
-    def client_params
-      params.require(:client).permit(:client_id, :name, :city_id)
-    end
+  def client_params
+    params.require(:client).permit(:name, :city_id)
+  end
 end
