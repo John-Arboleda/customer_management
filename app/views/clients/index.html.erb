@@ -14,7 +14,7 @@
         <tr>
           <td><%= client.client_id %></td>
           <td><%= client.name %></td>
-          <td><%= City.find(client.city_id).name %></td>
+          <td><%= City.find_by(city_id: client.city_id).try(:name) %></td>
           <td>
             <%= link_to 'Edit', edit_client_path(client), class: "btn btn-sm btn-outline-primary" %>
             <%= link_to 'Delete', client_path(client), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-outline-danger" %>

@@ -1,11 +1,11 @@
-<%= form_with model: @client, class: "form-group row", method: :post do |form| %>
-  <div class="col-sm-5">
+<%= form_with model: @client, class: "form-group row" do |form| %>
+  <div class="my-1">
     <%= form.text_field :name, name: "client[name]", class: "form-control", placeholder: "Add a new client" %>
   </div>
-  <div class="col-sm-4">
+  <div class="my-1">
     <%= form.select :city_id, City.all.map { |c| [c.name, c.city_id] }, {}, { class: "form-control" } %>
   </div>
-  <div class="col-sm-2">
+  <div class="my-1 d-flex justify-content-end">
     <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>
