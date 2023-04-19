@@ -1,8 +1,8 @@
 class CitiesController < ApplicationController
-##
-# Ensures that a user is logged in before they can access any of the controller's actions
- 
-before_action :require_user
+  ##
+  # Ensures that a user is logged in before they can access any of the controller's actions
+
+  before_action :require_user
 
   ##
   # Retrieves all of the cities from the database and order them by their id.
@@ -79,10 +79,11 @@ before_action :require_user
   end
 
   private
-    ##
-    # Retrieves the name of the city from the parameters.
 
-    def city_params
-      params.require(:city).permit(:name)
-    end
+  ##
+  # Retrieves the name of the city from the parameters.
+
+  def city_params
+    params.require(:city).permit(:name)
+  end
 end

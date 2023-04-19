@@ -1,8 +1,8 @@
 class ClientsController < ApplicationController
-##
-# Ensures that a user is logged in before they can access any of the controller's actions
- 
-before_action :require_user
+  ##
+  # Ensures that a user is logged in before they can access any of the controller's actions
+
+  before_action :require_user
 
   ##
   # Retrieves all of the clients from the database and order them by their id.
@@ -79,10 +79,11 @@ before_action :require_user
   end
 
   private
-    ##
-    # Retrieves the name and city_id of the client from the parameters.
 
-    def client_params
-      params.require(:client).permit(:name, :city_id)
-    end
+  ##
+  # Retrieves the name and city_id of the client from the parameters.
+
+  def client_params
+    params.require(:client).permit(:name, :city_id)
+  end
 end

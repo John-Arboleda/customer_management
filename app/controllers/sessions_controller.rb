@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-
   ##
   # Finds the user in the database with the given email address.
   #

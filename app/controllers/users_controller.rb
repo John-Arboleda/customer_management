@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   ##
   # Creates a new instance of the User model.
 

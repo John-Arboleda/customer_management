@@ -5,8 +5,9 @@ class City < ApplicationRecord
   has_many :clients, dependent: :nullify
 
   private
+
   def name_format
-    errors.add(:name, "should start with uppercase") unless name =~ /\A[A-ZÁÉÍÓÚÜ]/
-    errors.add(:name, "only allows letters and spaces") unless name =~ /\A[a-záéíóúüA-ZÁÉÍÓÚÜ\s]*\z/
+    errors.add(:name, 'should start with uppercase') unless name =~ /\A[A-ZÁÉÍÓÚÜ]/
+    errors.add(:name, 'only allows letters and spaces') unless name =~ /\A[a-záéíóúüA-ZÁÉÍÓÚÜ\s]*\z/
   end
 end
