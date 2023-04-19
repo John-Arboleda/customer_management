@@ -12,7 +12,8 @@
       <div class="my-1">
         <%= form.password_field :pass, name: "user[pass]", class: "form-control", placeholder: "Password" %>
       </div>
-      <div class="my-1 d-flex justify-content-end">
+      <div class="my-1 d-flex justify-content-between">
+        <p class="text-primary">Already have an account? <%= link_to 'Sign in', sign_in_path %></p>
         <%= form.submit class: "btn btn-primary" %>
       </div>
     <% end %>

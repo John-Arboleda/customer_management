@@ -31,6 +31,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 # Framework for developing responsive, mobile first projects on the web
 gem 'bootstrap', '~> 5.2', '>= 5.2.3'
 gem 'sassc-rails'
+gem 'jquery-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
